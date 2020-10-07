@@ -1,6 +1,5 @@
-FROM python:3.7-alpine
-
-RUN apk update && apk add jq curl
+FROM ubuntu:latest
+RUN apt-get -y update && apt-get install -y jq curl zip
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
 RUN unzip /tmp/awscliv2.zip -d /tmp
 RUN /tmp/aws/install
