@@ -1,0 +1,7 @@
+
+name: 'Upload file to s3'
+description: 'Upload file to s3'
+author: 'kuperiu'
+runs:
+  using: 'node12'
+  main: 'index.js'
