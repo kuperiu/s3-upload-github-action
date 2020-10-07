@@ -1,11 +1,23 @@
-const { exec } = require('child_process');
-exec('aws sts get-caller-identity', (err, stdout, stderr) => {
-  if (err) {
-    //some err occurred
-    console.error(err)
-  } else {
-   // the *entire* stdout and stderr (buffered)
-   console.log(`stdout: ${stdout}`);
-   console.log(`stderr: ${stderr}`);
-  }
-});
+const fs = require('fs');
+const AWS = require('aws-sdk');
+
+const s3 = new AWS.S3({});
+
+const fileName = 'contacts.csv';
+
+const uploadFile = () => {
+  fs.readFile(fileName, (err, data) => {
+     if (err) throw err;
+     const params = {
+         Bucket: 'process.env.S3_BUCKET', // pass your bucket name
+         Key: 'process.env.GITHUB_SHA', // file will be saved as testBucket/contacts.csv
+         Body: JSON.stringify(data, null, 2)
+     };
+     s3.upload(params, function(s3Err, data) {
+         if (s3Err) throw s3Err
+         console.log(`File uploaded successfully at ${data.Location}`)
+     });
+  });
+};
+
+uploadFile();
