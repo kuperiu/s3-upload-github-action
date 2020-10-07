@@ -8,7 +8,6 @@ ENV GITHUB_REPOSITORY ${GITHUB_REPOSITORY}
 ENV ROLE_ARN ${ROLE_ARN}
 ENV AWS_ROLE_ARN ${AWS_ROLE_ARN}
 RUN echo ${AWS_IAM_TOKEN} /var/run/secrets/eks.amazonaws.com/serviceaccount/token
-ADD /tmp/eks.amazonaws.com/serviceaccount/token /var/run/secrets/eks.amazonaws.com/serviceaccount/token
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
