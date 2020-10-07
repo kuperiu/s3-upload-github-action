@@ -24,7 +24,7 @@ set -e
 #   AWS_REGION="us-east-1"
 # fi
 echo ${GIT_SHA:0:10}.zip
-
+env
 aws s3 cp ${FILE} s3://${S3_BUCKET}/${S3_KEY}/${GIT_SHA:0:10}.zip --region ${AWS_REGION} $*
 
 
