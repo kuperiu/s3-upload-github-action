@@ -5,7 +5,7 @@ runs:
   using: docker
   image: Dockerfile
   env:
-    AWS_IAM_TOKEN: ${AWS_IAM_TOKEN}
+    AWS_IAM_TOKEN: "${AWS_IAM_TOKEN}"
 branding:
   icon: arrow-up
   color: green
